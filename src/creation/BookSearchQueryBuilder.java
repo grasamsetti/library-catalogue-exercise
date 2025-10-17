@@ -1,11 +1,18 @@
 package creation;
 
+import creation.catalogues.LibraryCatalogue;
+
 public class BookSearchQueryBuilder {
     private String name1;
     private String name2;
     private String title;
     private Integer date1;
     private Integer date2;
+    private final LibraryCatalogue catalogue;
+
+    public BookSearchQueryBuilder(LibraryCatalogue catalogue) {
+        this.catalogue = catalogue;
+    }
 
     public BookSearchQueryBuilder withName1(String name1) {
       this.name1 = name1;
@@ -33,6 +40,6 @@ public class BookSearchQueryBuilder {
     }
 
     public BookSearchQuery build() {
-      return new BookSearchQuery(name1, name2, title, date1, date2);
+      return new BookSearchQuery(name1, name2, title, date1, date2, catalogue);
   }
 }

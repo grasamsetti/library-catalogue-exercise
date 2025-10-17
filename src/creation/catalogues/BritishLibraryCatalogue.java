@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BritishLibraryCatalogue {
+public class BritishLibraryCatalogue implements LibraryCatalogue {
 
   private static BritishLibraryCatalogue instance;
 
