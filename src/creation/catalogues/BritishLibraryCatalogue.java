@@ -9,10 +9,22 @@ import java.util.stream.Collectors;
 
 public class BritishLibraryCatalogue {
 
+  private static BritishLibraryCatalogue instance;
+
   // imagine that each new instance of this object uses more than 500MB of RAM
 
   private final Collection<Book> catalogue = allTheBooks();
 
+  private BritishLibraryCatalogue() {
+
+  }
+
+  public static synchronized BritishLibraryCatalogue getInstance() {
+    if (instance == null) {
+      instance = new BritishLibraryCatalogue();
+    }
+    return instance;
+  }
   public List<Book> searchFor(String query) {
     return catalogue.stream()
         .filter(book -> book.matchesAuthor(QueryParser.lastNameFrom(query)))
